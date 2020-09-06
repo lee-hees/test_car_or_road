@@ -60,10 +60,16 @@
         async function predict() {
             // predict can take in an image, video or canvas html element
             const prediction = await model.predict(webcam.canvas);
-            for (let i = 0; i < maxPredictions; i++) {
-                const classPrediction =
-                    prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-                labelContainer.childNodes[i].innerHTML = classPrediction;
+            // for (let i = 0; i < maxPredictions; i++) {
+            //     const classPrediction =
+            //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            //     labelContainer.childNodes[i].innerHTML = classPrediction;
+            // }
+            if(prediction[0].className == "자동차 및 번호판" &&   prediction[0].probability.toFixed(2) == 1.0){
+                labelContainer.childNodes[0].innerHTML = "자동차 또는 번호판을 인식했습니다.";
+            }
+            else{
+                labelContainer.childNodes[1].innerHTML = "자동차가 없습니다.";
             }
         }
     </script>
