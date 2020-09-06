@@ -67,8 +67,10 @@
             // }
             if(prediction[0].className == "자동차 및 번호판" &&   prediction[0].probability.toFixed(2) == 1.0){
                 labelContainer.childNodes[0].innerHTML = "자동차 또는 번호판을 인식했습니다.";
+                labelContainer.childNodes[1].innerHTML = "";
             }
             else{
+                labelContainer.childNodes[0].innerHTML = "";
                 labelContainer.childNodes[1].innerHTML = "자동차가 없습니다.";
             }
         }
