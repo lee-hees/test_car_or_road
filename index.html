@@ -78,6 +78,25 @@
         }
     </script>
     <script>
+        let width = 640,
+            height = 0,
+            filter = "none",
+            streaming = false;
+
+
+        webcam.addEventListener('canplay', function (e) {
+            if (!streaming) {
+                //Set video/canvas height
+                height = webcam.videoHeight / (webcam.videoWidth / width);
+                webcam.setAttribute('width', width);
+                webcam.setAttribute('height', height);
+                canvas.setAttribute('width', width);
+                canvas.setAttribute('height', height);
+
+                streaming = true;
+            }
+        }, false);
+
         async function takePicture() {
             const context = canvas.getContext('2d');
             if (width && height) {
